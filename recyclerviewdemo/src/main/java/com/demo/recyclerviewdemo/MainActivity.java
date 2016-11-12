@@ -1,5 +1,8 @@
 package com.demo.recyclerviewdemo;
 
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_list;
     private Button btn_grid;
 
+    private SwipeRefreshLayout sl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +49,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_add.setOnClickListener(this);
         btn_grid.setOnClickListener(this);
         btn_remove.setOnClickListener(this);
+        sl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {//设置下拉刷新
+            @Override
+            public void onRefresh() {
+                mHandler.sendEmptyMessageDelayed(0,2000);
+
+
+            }
+        });
 
     }
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            adapter.addData(3,"刷新后的数据   ");
+            rlv.scrollToPosition(3);
+            sl.setRefreshing(false);
+        }
+    };
 
     private void initAdapter() {
         //添加数据
@@ -86,6 +108,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_list = (Button) findViewById(R.id.btn_list);
         btn_remove = (Button) findViewById(R.id.btn_remove);
         rlv = (RecyclerView) findViewById(R.id.rlv);
+        sl = (SwipeRefreshLayout) findViewById(R.id.sl);
+        //设置刷新控件圈圈的颜色
+        sl.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary,R.color.colorPrimaryDark);
+        //设置刷新控件背景色
+        sl.setProgressBackgroundColorSchemeColor(getResources().getColor(android.R.color.black));
+        //设置滑动距离
+        sl.setCameraDistance(100);
+        //设置大小模式
+        sl.setSize(SwipeRefreshLayout.DEFAULT);
     }
 
 
