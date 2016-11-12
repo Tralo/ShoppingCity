@@ -64,6 +64,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         return datas.size();
     }
 
+    public void addData(int pos,String data) {
+        datas.add(pos,data);
+        notifyItemInserted(pos);
+
+    }
+
+    public void removeData(int i) {
+        if(datas.size() > i + 1){
+            datas.remove(i);
+            notifyItemRemoved(i);
+        }
+
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView iv_icon;
