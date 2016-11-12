@@ -2,9 +2,11 @@ package com.demo.recyclerviewdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.demo.recyclerviewdemo.adapter.MyItemDecoration;
 import com.demo.recyclerviewdemo.adapter.RecyclerAdapter;
 
 import java.util.ArrayList;
@@ -37,8 +39,12 @@ public class MainActivity extends AppCompatActivity {
         /**
          * LinearLayoutManager构造器参数: 上下文， 水平或竖直， 是否倒序
          */
-        rlv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        rlv.scrollToPosition(20);
+//        rlv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+//        rlv.setLayoutManager(new GridLayoutManager(MainActivity.this,2/*,GridLayoutManager.HORIZONTAL,true*/));
+        rlv.setLayoutManager(new LinearLayoutManager(this));
+//        rlv.scrollToPosition(20);
+
+        rlv.addItemDecoration(new MyItemDecoration(MainActivity.this,MyItemDecoration.VERTICAL_LIST));
     }
 
 
