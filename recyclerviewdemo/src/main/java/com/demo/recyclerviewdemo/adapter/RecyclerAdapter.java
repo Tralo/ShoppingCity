@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.demo.recyclerviewdemo.MainActivity;
 import com.demo.recyclerviewdemo.R;
@@ -18,6 +19,13 @@ import java.util.List;
  * Created by adventurer on 16-11-12.
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
+
+    private RecyclerAdapter.OnItemClickListener onItemClickListener;
+
+
+    public void setOnItemClickListener(RecyclerAdapter.OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
 
     private Context context;
     private List<String> datas;
@@ -65,6 +73,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             super(itemView);
             iv_icon = (ImageView) itemView.findViewById(R.id.iv_icon);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+            //设置点击事件
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    Toast.makeText(context,"data == " + datas.get(getLayoutPosition()),Toast.LENGTH_SHORT).show();
+                    if(onItemClickListener != null){
+                        onItemClickListener.onItemClick(view,getLayoutPosition(),datas.get(getLayoutPosition()));
+                    }
+                }
+            });
+            iv_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context,"图片被点击类  data == " + datas.get(getLayoutPosition()), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
+    }
+
+    /**
+     * 点击RecyclerView的item点击回调接口
+     */
+    public interface  OnItemClickListener{
+        void onItemClick(View view,int position,String data);
     }
 }

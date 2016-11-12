@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.demo.recyclerviewdemo.adapter.MyItemDecoration;
 import com.demo.recyclerviewdemo.adapter.RecyclerAdapter;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //设置适配器
         adapter = new RecyclerAdapter(this,datas);
+
         rlv.setAdapter(adapter);
 
         //设置布局管理器
@@ -43,9 +46,21 @@ public class MainActivity extends AppCompatActivity {
 //        rlv.setLayoutManager(new GridLayoutManager(MainActivity.this,2/*,GridLayoutManager.HORIZONTAL,true*/));
         rlv.setLayoutManager(new LinearLayoutManager(this));
 //        rlv.scrollToPosition(20);
-
+        //设置分割线
         rlv.addItemDecoration(new MyItemDecoration(MainActivity.this,MyItemDecoration.VERTICAL_LIST));
+
+        //设置点击某一条的事件
+        adapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, String data) {
+                Toast.makeText(MainActivity.this,"data == " + data + ", position ==" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+
+
 
 
 
