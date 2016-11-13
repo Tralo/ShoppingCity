@@ -1,5 +1,6 @@
 package com.study.shoppingcity.activity;
 
+import android.media.Image;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.study.shoppingcity.R;
+import com.study.shoppingcity.utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,16 +28,41 @@ public class GuideActivity extends AppCompatActivity {
             R.mipmap.guide_3
     };
 
+
     private List<ImageView> imageViews = new ArrayList<ImageView>();
+
+    private List<ImageView> dotViews = new ArrayList<ImageView>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
         initView();
+        initDotGroup();
         initGuideViews();
         initViewPager();
     }
+
+    private void initDotGroup() {
+        for(int i = 0; i < ids.length; i++){
+            ImageView point = new ImageView(this);
+            point.setBackgroundResource(R.drawable.point_normal);
+            dotViews.add(point);
+            /**
+             * 单位是像素
+             */
+            LinearLayout.LayoutParams params
+                    = new LinearLayout.LayoutParams(DensityUtil.dip2px(GuideActivity.this,10)
+                    ,DensityUtil.dip2px(GuideActivity.this,10));
+            params.setMargins(DensityUtil.dip2px(GuideActivity.this,6),0,DensityUtil.dip2px(GuideActivity.this,6),0);
+            point.setLayoutParams(params);
+            //添加到线性布里面
+            ll_point_group.addView(point);
+
+        }
+        dotViews.get(0).setBackgroundResource(R.drawable.point_red);
+    }
+
     //设置viewpager的适配器,监听事件
     private void initViewPager() {
         viewPager.setAdapter(new GuidePagerAdapter());
@@ -51,6 +78,10 @@ public class GuideActivity extends AppCompatActivity {
                 } else {
                     btn_start.setVisibility(View.GONE);
                 }
+                for(ImageView iv : dotViews){
+                    iv.setBackgroundResource(R.drawable.point_normal);
+                }
+                dotViews.get(position).setBackgroundResource(R.drawable.point_red);
             }
 
             @Override
