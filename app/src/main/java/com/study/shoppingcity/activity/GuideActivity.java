@@ -1,5 +1,6 @@
 package com.study.shoppingcity.activity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.study.shoppingcity.R;
+import com.study.shoppingcity.SplashActivity;
+import com.study.shoppingcity.utils.CacheUtils;
 import com.study.shoppingcity.utils.DensityUtil;
 
 import java.util.ArrayList;
@@ -53,7 +56,17 @@ public class GuideActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        
+        btn_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //1.保存记录参数
+                CacheUtils.setBoolean(GuideActivity.this, SplashActivity.START_MAIN,true);
+                Intent i = new Intent(GuideActivity.this,MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
     }
 
     private void initDotGroup() {

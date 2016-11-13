@@ -11,11 +11,12 @@ import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
 import com.study.shoppingcity.activity.GuideActivity;
+import com.study.shoppingcity.activity.MainActivity;
 import com.study.shoppingcity.utils.CacheUtils;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final String START_MAIN = "start_main";
+    public static final String START_MAIN = "start_main";
 
     private RelativeLayout rl_splash;
 
@@ -70,6 +71,8 @@ public class SplashActivity extends AppCompatActivity {
 
                 if(isStartMain){
                     //如果进入过主页面，直接进入主页面
+                    Intent i = new Intent(SplashActivity.this,MainActivity.class);
+                    startActivity(i);
                 } else {
                     //如果没有进入过主页面，进入引导页面
                     Intent i = new Intent(SplashActivity.this,GuideActivity.class);
