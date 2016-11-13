@@ -12,6 +12,7 @@ import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.study.shoppingcity.R;
 import com.study.shoppingcity.utils.DensityUtil;
@@ -31,7 +32,7 @@ public class GuideActivity extends AppCompatActivity {
             R.mipmap.guide_3
     };
     //两点的间距
-    private int leftmax = 0s;
+    private int leftmax = 0;
 
     private int currPos = 0;
 
@@ -48,6 +49,11 @@ public class GuideActivity extends AppCompatActivity {
         initDotGroup();
         initGuideViews();
         initViewPager();
+        initListener();
+    }
+
+    private void initListener() {
+        
     }
 
     private void initDotGroup() {
@@ -79,13 +85,19 @@ public class GuideActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.i("GuideActivity","currPos: " + currPos +"    position:"+ position+"   positionOffset: " + positionOffset + "     positionOffsetPixels: " + positionOffsetPixels);
+               /* Log.i("GuideActivity","currPos: " + currPos +"    position:"+ position+"   positionOffset: " + positionOffset + "     positionOffsetPixels: " + positionOffsetPixels);
                 if(currPos > position){
 
                 }
                 if(currPos < position){
 
-                }
+                }*/
+                int leftmargin = (int) (position * leftmax + positionOffset * leftmax);
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) iv_red.getLayoutParams();
+                params.leftMargin = leftmargin;
+                iv_red.setLayoutParams(params);
+
+
             }
 
             @Override
