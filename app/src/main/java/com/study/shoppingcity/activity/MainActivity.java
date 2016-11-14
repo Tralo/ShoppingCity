@@ -13,6 +13,8 @@ import com.study.shoppingcity.fragment.ContentFragment;
 import com.study.shoppingcity.fragment.LeftMmenuFragment;
 import com.study.shoppingcity.utils.DensityUtil;
 
+import org.xutils.x;
+
 public class MainActivity extends SlidingFragmentActivity {
 
     private static final String MAIN_CONTENT_TAG = "main_content_tag";
@@ -25,6 +27,7 @@ public class MainActivity extends SlidingFragmentActivity {
         super.onCreate(savedInstanceState);
         //1.设置主页面
         setContentView(R.layout.activity_main);
+
         initSlideMenu();
         initFragment();
 

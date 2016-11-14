@@ -11,13 +11,18 @@ import android.widget.TextView;
 import com.study.shoppingcity.R;
 import com.study.shoppingcity.base.BaseFragment;
 
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
 /**
  * Created by adventurer on 16-11-14.
  */
 public class ContentFragment extends BaseFragment {
 
-    private ViewPager viewPager;
-    private RadioGroup rg_main;
+    @ViewInject(R.id.viewpager)
+    public ViewPager viewPager;
+    @ViewInject(R.id.rg_main)
+    public RadioGroup rg_main;
 
     @Override
     protected void initData() {
@@ -29,8 +34,7 @@ public class ContentFragment extends BaseFragment {
     @Override
     public View initView() {
         View view = View.inflate(activity, R.layout.content_fragment,null);
-        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        rg_main = (RadioGroup) view.findViewById(R.id.rg_main);
+        x.view().inject(ContentFragment.this,view);
         return view;
     }
 }
