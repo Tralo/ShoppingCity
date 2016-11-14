@@ -41,15 +41,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initAnimation() {
         aa = new AlphaAnimation(0,1);
-        aa.setDuration(3000);
         aa.setFillAfter(true);
-
         sa = new ScaleAnimation(0,1,0,1,ScaleAnimation.RELATIVE_TO_SELF,0.5f,ScaleAnimation.RELATIVE_TO_SELF,0.5f);
-        sa.setDuration(3000);
         sa.setFillAfter(true);
 
         ra = new RotateAnimation(0,360,RotateAnimation.RELATIVE_TO_SELF,0.5f,RotateAnimation.RELATIVE_TO_SELF,0.5f);
-        ra.setDuration(3000);
         ra.setFillAfter(true);
 
         AnimationSet set =  new AnimationSet(false);
@@ -57,6 +53,7 @@ public class SplashActivity extends AppCompatActivity {
         set.addAnimation(aa);
         set.addAnimation(sa);
         set.addAnimation(ra);
+        set.setDuration(1000);
         rl_splash.startAnimation(set);
         set.setAnimationListener(new Animation.AnimationListener() {
             @Override
