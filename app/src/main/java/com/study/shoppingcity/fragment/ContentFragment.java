@@ -18,6 +18,7 @@ import com.study.shoppingcity.pager.HomePager;
 import com.study.shoppingcity.pager.NewsCenterPager;
 import com.study.shoppingcity.pager.SettingPager;
 import com.study.shoppingcity.pager.SmartServicePager;
+import com.study.shoppingcity.view.NoScrollViewPager;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -31,7 +32,7 @@ import java.util.List;
 public class ContentFragment extends BaseFragment {
 
     @ViewInject(R.id.viewpager)
-    public ViewPager viewPager;
+    public NoScrollViewPager viewPager;
     @ViewInject(R.id.rg_main)
     public RadioGroup rg_main;
 
