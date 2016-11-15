@@ -71,6 +71,29 @@ public class ContentFragment extends BaseFragment {
 
             }
         });
+        rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rb_home:
+                        viewPager.setCurrentItem(0);
+                        break;
+                    case R.id.rb_newscenter:
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case R.id.rb_smartservice:
+                        viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.rb_govaffair:
+                        viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.rb_setting:
+                        viewPager.setCurrentItem(4);
+                        break;
+                }
+
+            }
+        });
     }
 
     @Override
