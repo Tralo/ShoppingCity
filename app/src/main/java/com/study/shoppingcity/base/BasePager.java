@@ -22,7 +22,7 @@ public class BasePager {
 
     protected TextView tv_title;
     protected ImageView ib_menu;
-    private FrameLayout fl_content;
+    protected FrameLayout fl_content;
 
 
     public BasePager(Context context){
@@ -31,7 +31,7 @@ public class BasePager {
         initData();
     }
 
-    private void initData() {
+    public void initData() {
 
     }
 
