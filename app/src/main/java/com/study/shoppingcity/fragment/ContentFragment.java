@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.study.shoppingcity.R;
+import com.study.shoppingcity.activity.MainActivity;
 import com.study.shoppingcity.base.BaseFragment;
 import com.study.shoppingcity.base.BasePager;
 import com.study.shoppingcity.pager.GovaffairPager;
@@ -53,6 +55,11 @@ public class ContentFragment extends BaseFragment {
 
         //设置默认选中
         rg_main.check(R.id.rb_home);
+
+        pagers.get(0).initData();
+
+        isEnableSlidingMenu(SlidingMenu.TOUCHMODE_NONE);
+
         //设置ViewPager的适配器
 
         viewPager.setAdapter(new ContentFragmentAdapter());
@@ -75,12 +82,14 @@ public class ContentFragment extends BaseFragment {
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                isEnableSlidingMenu(SlidingMenu.TOUCHMODE_NONE);
                 switch (i){
                     case R.id.rb_home:
                         viewPager.setCurrentItem(0);
                         break;
                     case R.id.rb_newscenter:
                         viewPager.setCurrentItem(1);
+                        isEnableSlidingMenu(SlidingMenu.TOUCHMODE_FULLSCREEN);
                         break;
                     case R.id.rb_smartservice:
                         viewPager.setCurrentItem(2);
@@ -95,6 +104,11 @@ public class ContentFragment extends BaseFragment {
 
             }
         });
+    }
+
+    private void isEnableSlidingMenu(int touchmodeFullscreen) {
+        MainActivity activity = (MainActivity) getContext();
+        activity.getSlidingMenu().setTouchModeAbove(touchmodeFullscreen);
     }
 
     @Override
