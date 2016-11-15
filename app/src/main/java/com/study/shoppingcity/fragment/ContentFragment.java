@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.study.shoppingcity.R;
 import com.study.shoppingcity.activity.MainActivity;
+import com.study.shoppingcity.adapter.ContentFragmentAdapter;
 import com.study.shoppingcity.base.BaseFragment;
 import com.study.shoppingcity.base.BasePager;
 import com.study.shoppingcity.pager.GovaffairPager;
@@ -62,7 +63,7 @@ public class ContentFragment extends BaseFragment {
 
         //设置ViewPager的适配器
 
-        viewPager.setAdapter(new ContentFragmentAdapter());
+        viewPager.setAdapter(new ContentFragmentAdapter(pagers));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -116,34 +117,6 @@ public class ContentFragment extends BaseFragment {
         View view = View.inflate(activity, R.layout.content_fragment,null);
         x.view().inject(ContentFragment.this,view);
         return view;
-    }
-
-    class ContentFragmentAdapter extends PagerAdapter{
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            BasePager basePager = pagers.get(position);
-            View rootView = basePager.rootView;
-            container.addView(rootView);
-
-            return rootView;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            BasePager basePager = pagers.get(position);
-            container.removeView(basePager.rootView);
-        }
-
-        @Override
-        public int getCount() {
-            return pagers.size();
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
     }
 
 

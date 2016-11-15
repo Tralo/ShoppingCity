@@ -27,11 +27,8 @@ public class MainActivity extends SlidingFragmentActivity {
         super.onCreate(savedInstanceState);
         //1.设置主页面
         setContentView(R.layout.activity_main);
-
         initSlideMenu();
         initFragment();
-
-
     }
 
     private void initFragment() {
@@ -44,8 +41,6 @@ public class MainActivity extends SlidingFragmentActivity {
         ft.replace(R.id.fl_leftmenu,new LeftMmenuFragment(),LEFTMENU_TAG);
         //4.提交
         ft.commit();
-
-
     }
 
     private void initSlideMenu() {
