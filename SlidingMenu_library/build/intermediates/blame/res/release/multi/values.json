@@ -1,38 +1,14 @@
 [
     {
-        "outputFile": "/home/adventurer/BeijingNews/SlidingMenu_library/build/intermediates/res/merged/release/values/values.xml",
+        "outputFile": "/home/adventurer/project/ShoppingCity/SlidingMenu_library/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 961,
+                    "startOffset": 1092,
                     "endColumn": 42,
-                    "endOffset": 999
-                },
-                "from": {
-                    "file": "/home/adventurer/BeijingNews/SlidingMenu_library/res/values/ids.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 42,
-                        "endOffset": 93
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/home/adventurer/project/ShoppingCity/SlidingMenu_library/build/intermediates/res/merged/release/values/values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 961,
-                    "endColumn": 42,
-                    "endOffset": 999
+                    "endOffset": 1130
                 },
                 "from": {
                     "file": "/home/adventurer/project/ShoppingCity/SlidingMenu_library/res/values/ids.xml",
