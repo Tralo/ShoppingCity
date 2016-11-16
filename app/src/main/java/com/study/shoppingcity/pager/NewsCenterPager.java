@@ -46,6 +46,7 @@ public class NewsCenterPager extends BasePager {
             @Override
             public void onSuccess(String result) {
                 Log.i(TAG,"联网成功获取的数据:  " + result);
+                processData(result);
             }
 
             @Override
@@ -66,6 +67,10 @@ public class NewsCenterPager extends BasePager {
             }
         });
         
+    }
+
+    private void processData(String json) {
+
     }
 
 
