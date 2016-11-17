@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.study.shoppingcity.base.BasePager;
+import com.study.shoppingcity.domain.NewsCenterPagerBean;
 import com.study.shoppingcity.utils.Constants;
 
 import org.xutils.common.Callback;
@@ -70,7 +72,18 @@ public class NewsCenterPager extends BasePager {
     }
 
     private void processData(String json) {
+        NewsCenterPagerBean bean = parseJson(json);
+        Log.i(TAG,"bean:  " + bean);
 
+    }
+
+    /**
+     * 解析json数据
+     * @param json
+     * @return
+     */
+    private NewsCenterPagerBean parseJson(String json) {
+        return new Gson().fromJson(json,NewsCenterPagerBean.class);
     }
 
 

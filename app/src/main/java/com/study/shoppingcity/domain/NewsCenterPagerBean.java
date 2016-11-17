@@ -182,6 +182,40 @@ public class NewsCenterPagerBean {
             public void setUrl(String url) {
                 this.url = url;
             }
+
+            @Override
+            public String toString() {
+                return "ChildrenBean{" +
+                        "id=" + id +
+                        ", title='" + title + '\'' +
+                        ", type=" + type +
+                        ", url='" + url + '\'' +
+                        '}';
+            }
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", type=" + type +
+                    ", url='" + url + '\'' +
+                    ", url1='" + url1 + '\'' +
+                    ", excurl='" + excurl + '\'' +
+                    ", dayurl='" + dayurl + '\'' +
+                    ", weekurl='" + weekurl + '\'' +
+                    ", children=" + children +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "NewsCenterPagerBean{" +
+                "retcode=" + retcode +
+                ", data=" + data +
+                ", extend=" + extend +
+                '}';
     }
 }
