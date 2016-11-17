@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -36,6 +37,15 @@ public class NewsCenterPager extends BasePager {
     @Override
     public void initData() {
         super.initData();
+        ib_menu.setVisibility(View.VISIBLE);
+        ib_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity ma = (MainActivity) context;
+                ma.getSlidingMenu().toggle();
+            }
+        });
+
         tv_title.setText("新闻中心");
         TextView textView = new TextView(context);
         textView.setText("新闻中心内容");
@@ -87,6 +97,8 @@ public class NewsCenterPager extends BasePager {
         LeftMmenuFragment leftMenuFragment = mainActivity.getLeftMenuFragment();
 
         leftMenuFragment.setData(data);
+
+
 
     }
 
