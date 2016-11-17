@@ -59,4 +59,8 @@ public class MainActivity extends SlidingFragmentActivity {
         //6.设置主页占据的宽度
         slidingMenu.setBehindOffset(DensityUtil.dip2px(MainActivity.this,200));
     }
+
+    public LeftMmenuFragment getLeftMenuFragment() {
+        return (LeftMmenuFragment) getSupportFragmentManager().findFragmentByTag(LEFTMENU_TAG);
+    }
 }

@@ -7,13 +7,17 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.study.shoppingcity.activity.MainActivity;
 import com.study.shoppingcity.base.BasePager;
 import com.study.shoppingcity.domain.NewsCenterPagerBean;
+import com.study.shoppingcity.fragment.LeftMmenuFragment;
 import com.study.shoppingcity.utils.Constants;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
+
+import java.util.List;
 
 /**
  * Created by adventurer on 16-11-15.
@@ -21,6 +25,8 @@ import org.xutils.x;
 public class NewsCenterPager extends BasePager {
 
     private static final  String TAG = "NewsCenterPager";
+
+    private List<NewsCenterPagerBean.DataBean> data;
 
 
     public NewsCenterPager(Context context) {
@@ -74,6 +80,13 @@ public class NewsCenterPager extends BasePager {
     private void processData(String json) {
         NewsCenterPagerBean bean = parseJson(json);
         Log.i(TAG,"bean:  " + bean);
+
+        //给左侧菜单传递数据
+        data = bean.getData();
+        MainActivity mainActivity = (MainActivity) context;
+        LeftMmenuFragment leftMenuFragment = mainActivity.getLeftMenuFragment();
+
+        leftMenuFragment.setData(data);
 
     }
 
